@@ -53,7 +53,7 @@ const Body = () => {
         </div>
       </nav>
 
-      <div className="movielist">
+      <div className="movielist ">
         {movie.movies.map((val) => {
           return (
             <Link to={'/movie/' + val._id} key={val._id}>
