@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from './utils/authSlice';
 function Login() {
@@ -21,7 +21,7 @@ function Login() {
       initialValues: initialValues,
       validationSchema: validationSchema,
       onSubmit: async (values, action) => {
-        await Axios.post('http://localhost:4000/api/login', values)
+        await Axios.post('https://movieapi-ka6t.onrender.com/api/login', values)
           .then((res) => {
             alert(res.data.message);
             localStorage.setItem('token', res.data.token);
@@ -75,8 +75,13 @@ function Login() {
               </div>
 
               <button className="btn btn-primary w-100 mt-3" type="Submit">
-                SignUp
+                Signin
               </button>
+              <Link to={'/signup'}>
+                <button className="btn btn-primary w-100 mt-3" type="Submit">
+                  SignUp
+                </button>
+              </Link>
             </form>
           </div>
         </div>

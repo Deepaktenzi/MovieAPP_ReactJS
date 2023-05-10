@@ -11,7 +11,7 @@ function EditMovie() {
     fetctMovieById();
   }, []);
   const fetctMovieById = async () => {
-    await Axios.get('http://localhost:4000/api/getmoviebyid', {
+    await Axios.get('https://movieapi-ka6t.onrender.com/api/getmoviebyid', {
       params: {
         id: movieId,
       },

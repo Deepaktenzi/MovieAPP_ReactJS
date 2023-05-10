@@ -14,7 +14,10 @@ function Addmovie() {
     setLoading1(true);
     const imgData = new FormData();
     imgData.append('image', e.target.files[0]);
-    await Axios.post('http://localhost:4000/api/uploadImg', imgData)
+    await Axios.post(
+      'https://movieapi-ka6t.onrender.com/api/uploadImg',
+      imgData
+    )
       .then((res) => {
         console.log(res);
         setImage(res.data.imgurl);
@@ -27,18 +30,19 @@ function Addmovie() {
     setLoading2(true);
     const vdodata = new FormData();
     vdodata.append('video', e.target.files[0]);
-    await Axios.post('http://localhost:4000/api/uploadvideo', vdodata).then(
-      (res) => {
-        console.log(res);
-        setVideo(res.data.videourl);
-      }
-    );
+    await Axios.post(
+      'https://movieapi-ka6t.onrender.com/api/uploadvideo',
+      vdodata
+    ).then((res) => {
+      console.log(res);
+      setVideo(res.data.videourl);
+    });
     setLoading2(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await Axios.post('http://localhost:4000/api/addmovie', {
+    await Axios.post('https://movieapi-ka6t.onrender.com/api/addmovie', {
       name: name,
       description: desc,
       thumbnail: image,

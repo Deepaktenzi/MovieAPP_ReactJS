@@ -16,8 +16,8 @@ const MoviesDash = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    await Axios.get('http://localhost:4000/api/getmovies').then((res) =>
-      setMoviesList(res.data.data)
+    await Axios.get('https://movieapi-ka6t.onrender.com/api/getmovies').then(
+      (res) => setMoviesList(res.data.data)
     );
   };
 

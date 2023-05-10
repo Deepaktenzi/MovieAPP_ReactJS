@@ -15,7 +15,7 @@ function Comments({ data, movieId }) {
     console.log('Comment Id', id);
     console.log('Movie Id', movieId);
     await Axios.put(
-      'http://localhost:4000/api/editcoment',
+      'https://movieapi-ka6t.onrender.com/api/editcoment',
       { comment, movieId: movieId, commentId: id },
       {
         headers: {

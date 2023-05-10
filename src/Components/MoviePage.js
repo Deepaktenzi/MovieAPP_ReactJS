@@ -18,7 +18,7 @@ function MoviePage() {
     fetchMovie();
   }, []);
   const fetchMovie = async () => {
-    await Axios.get('http://localhost:4000/api/getsinglemovie', {
+    await Axios.get('https://movieapi-ka6t.onrender.com/api/getsinglemovie', {
       params: { id: id },
       headers: {
         Authorization: newToken,
@@ -31,7 +31,7 @@ function MoviePage() {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        await Axios.get(`http://localhost:4000/api/showComment`, {
+        await Axios.get(`https://movieapi-ka6t.onrender.com/api/showComment`, {
           params: {
             movieId: id,
           },
@@ -49,7 +49,7 @@ function MoviePage() {
 
   const postComment = async () => {
     await Axios.put(
-      'http://localhost:4000/api/addComment',
+      'https://movieapi-ka6t.onrender.com/api/addComment',
       { newcomments, movieId: id },
       {
         headers: {

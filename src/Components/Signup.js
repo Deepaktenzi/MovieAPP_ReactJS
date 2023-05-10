@@ -13,11 +13,6 @@ function Signup() {
     cpassword: '',
   });
 
-  //   const handleSubmit = async (e) => {
-  //     e.targetDefault();
-  //     await Axios.post('http://localhost:4000/api/getsinglemovie');
-  //   };
-
   const validationSchema = Yup.object({
     name: Yup.string().min(2).max(25).required('Please enter your name'),
     email: Yup.string().email().required('Please enter your email'),
@@ -37,7 +32,10 @@ function Signup() {
       initialValues: initialValues,
       validationSchema: validationSchema,
       onSubmit: async (values, action) => {
-        await Axios.post('http://localhost:4000/api/register', values)
+        await Axios.post(
+          'https://movieapi-ka6t.onrender.com/api/register',
+          values
+        )
           .then((res) => {
             alert(res.data.message);
             navigate('/login');

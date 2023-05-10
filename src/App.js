@@ -26,7 +26,6 @@ const appRouter = createBrowserRouter([
         <PersistGate persistor={persistor}>
           <Header />
           <Outlet />
-          <Footer />
         </PersistGate>
       </Provider>
     ),

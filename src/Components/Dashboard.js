@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
-import Addmovie from './Addmovie';
-import MoviesDash from './MoviesDash';
+import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 function Dashboard() {
-  const [showAddMovie, setShowAddMovie] = useState(true);
-  const [showMovie, setShowMovie] = useState(false);
-
   return (
-    <section className="container fill">
+    <section className="container-fluid ">
       <div className="row gap-5 ">
-        <aside className="col-lg-2 bg-black fill">
+        <aside className="col-lg-2 bg-black ">
           <ul className="d-flex flex-column py-5 p-0">
             <li>
               <Link className="btn btn-primary w-100" to={'/dashboard/show'}>
@@ -27,7 +22,7 @@ function Dashboard() {
             </li>
           </ul>
         </aside>
-        <div className="col-lg-8 py-3">
+        <div className="col-lg-8 py-3 mb-5">
           <Outlet />
         </div>
       </div>

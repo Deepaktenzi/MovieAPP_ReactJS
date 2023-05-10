@@ -2,12 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Shimmer from '../Components/Shimmer';
 import MovieCard from './MovieCard';
-import {
-  fetchMovies,
-  searchItem,
-  sortAlphabetically,
-  sortMovies,
-} from './utils/moviesSlice';
+import { fetchMovies, searchItem, sortMovies } from './utils/moviesSlice';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 const Body = () => {
@@ -21,8 +16,8 @@ const Body = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    await Axios.get('http://localhost:4000/api/getmovies').then((res) =>
-      setMoviesList(res.data.data)
+    await Axios.get('https://movieapi-ka6t.onrender.com/api/getmovies').then(
+      (res) => setMoviesList(res.data.data)
     );
   };
 

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import ReactPlayer from 'react-player';
 import Loader from './Loader';
+import { useNavigate } from 'react-router-dom';
 function Edit({ data, id }) {
-  console.log(data);
+  const navigate = useNavigate();
   const [movname, setName] = useState();
   const [desc, setDesc] = useState();
   const [image, setImage] = useState();
@@ -14,7 +15,10 @@ function Edit({ data, id }) {
     setLoading1(true);
     const imgData = new FormData();
     imgData.append('image', e.target.files[0]);
-    await Axios.post('http://localhost:4000/api/uploadImg', imgData)
+    await Axios.post(
+      'https://movieapi-ka6t.onrender.com/api/uploadImg',
+      imgData
+    )
       .then((res) => {
         console.log(res);
         setImage(res.data.imgurl);
@@ -27,12 +31,13 @@ function Edit({ data, id }) {
     setLoading2(true);
     const vdodata = new FormData();
     vdodata.append('video', e.target.files[0]);
-    await Axios.post('http://localhost:4000/api/uploadvideo', vdodata).then(
-      (res) => {
-        console.log(res);
-        setVideo(res.data.videourl);
-      }
-    );
+    await Axios.post(
+      'https://movieapi-ka6t.onrender.com/api/uploadvideo',
+      vdodata
+    ).then((res) => {
+      console.log(res);
+      setVideo(res.data.videourl);
+    });
     setLoading2(false);
   };
 
@@ -47,7 +52,7 @@ function Edit({ data, id }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await Axios.put('http://localhost:4000/api/editmovie', {
+    await Axios.put('https://movieapi-ka6t.onrender.com/api/editmovie', {
       id: id,
       name: movname,
       description: desc,
@@ -55,7 +60,7 @@ function Edit({ data, id }) {
       trailer: video,
     }).then((res) => {
       alert(res.data.message);
-      console.log(res);
+      navigate('/dashboard/show');
     });
   };
   return (

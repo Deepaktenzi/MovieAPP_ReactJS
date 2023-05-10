@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addId } from './utils/movieByIdSlice';
 import Axios from 'axios';
@@ -7,7 +7,7 @@ function DashMovieItems({ name, thumbnail, _id }) {
   const dispatch = useDispatch();
   const deleteMovie = async () => {
     console.log('Button call');
-    await Axios.delete('http://localhost:4000/api/deletemovie/', {
+    await Axios.delete('https://movieapi-ka6t.onrender.com/api/deletemovie/', {
       params: {
         id: _id.toString(),
       },
