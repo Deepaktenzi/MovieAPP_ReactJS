@@ -26,17 +26,18 @@ function Login() {
           .then((res) => {
             if (res.status === 401) {
               setErrors(res.data.message);
+            } else {
+              alert(res.data.message);
+              localStorage.setItem('token', res.data.token);
+              dispatch(
+                loginSuccess({
+                  token: res.data.token,
+                  rootId: res.data.rootId,
+                  rootUser: res.data.rootUser,
+                })
+              );
+              navigate('/dashboard');
             }
-            alert(res.data.message);
-            localStorage.setItem('token', res.data.token);
-            dispatch(
-              loginSuccess({
-                token: res.data.token,
-                rootId: res.data.rootId,
-                rootUser: res.data.rootUser,
-              })
-            );
-            navigate('/dashboard');
           })
           .catch((err) => {
             alert(err.message);
