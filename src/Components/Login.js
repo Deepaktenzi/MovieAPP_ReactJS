@@ -16,6 +16,7 @@ function Login() {
     password: '',
   };
   const navigate = useNavigate();
+  const [error, setErrors] = useState();
   const { values, errors, handleSubmit, handleBlur, touched, handleChange } =
     useFormik({
       initialValues: initialValues,
@@ -24,7 +25,7 @@ function Login() {
         await Axios.post('https://movieapi-ka6t.onrender.com/api/login', values)
           .then((res) => {
             if (res.status === 401) {
-              alert(res.data);
+              setErrors(res.data.message);
             }
             alert(res.data.message);
             localStorage.setItem('token', res.data.token);
@@ -76,7 +77,11 @@ function Login() {
                   <p>{errors.password}</p>
                 ) : null}
               </div>
-
+              {error ? (
+                <div className="form-group">
+                  <label className="form-label">{error}</label>
+                </div>
+              ) : null}
               <button className="btn btn-primary w-100 mt-3" type="Submit">
                 Signin
               </button>
