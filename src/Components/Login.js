@@ -23,6 +23,9 @@ function Login() {
       onSubmit: async (values, action) => {
         await Axios.post('https://movieapi-ka6t.onrender.com/api/login', values)
           .then((res) => {
+            if (res.status === 401) {
+              alert(res.data);
+            }
             alert(res.data.message);
             localStorage.setItem('token', res.data.token);
             dispatch(
