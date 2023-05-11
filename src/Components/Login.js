@@ -40,8 +40,7 @@ function Login() {
             }
           })
           .catch((err) => {
-            console.log(err);
-            alert(err.message);
+            alert('Unauthorized user');
           });
 
         action.resetForm();
