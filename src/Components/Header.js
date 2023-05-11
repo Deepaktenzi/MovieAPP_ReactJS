@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid ">
+        <div className="container ">
           <Link className="navbar-brand" href="#">
             MovieAPP
           </Link>
@@ -29,7 +29,10 @@ const Header = () => {
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div className="navbar-collapse collapse " id="navbarNav">
+          <div
+            className="navbar-collapse collapse justify-content-end "
+            id="navbarNav"
+          >
             <ul className="navbar-nav ">
               <li className="nav-item active">
                 <Link className="nav-link" href="#">
